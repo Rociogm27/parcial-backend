@@ -1,15 +1,6 @@
 import Parada from "../models/ParadaModel.js"
 import axios from 'axios'
 
-export const getAll = async (req, res) => {
-    try {
-        const paradas = await Parada.find()
-
-        res.json(paradas)
-    } catch (error) {
-        console.log("Error getAll")
-    }
-};
 
 export const getUbicacion = async (req, res) => {
     try {
@@ -36,34 +27,6 @@ export const getUbicacion = async (req, res) => {
     }
 }
 
-//Obtengo todas las paradas de una linea que van en un mismo sentido
-//Devuelvo una lista de tuplas con la lat y lon de cada parada
-export const getParadasPorLineaSentido = async (req, res) => {
-    try {
-        const { linea, sentido } = req.body
-        const paradas = await Parada.find({codLinea: linea, sentido: sentido})
-    
-        console.log("getParadasPorLineaSentido: " + paradas)
-        res.json(paradas)    
-    } catch (error) {
-        console.log("Error getParadasPorLineaSentido")
-    }
-}
-
-//Obtengo paradas cuyo nombre (nombreParada) coincida con una cadena
-export const getParadasPorNombre = async (req, res) => {
-    try {
-        const { nombre } = req.body
-
-        // Utiliza una expresión regular para buscar todas las paradas que contengan la cadena proporcionada en el nombre.
-        const paradas = await Parada.find({ nombreParada: { $regex: new RegExp(nombre, 'i') } });
-
-        console.log("getParadasPorNombre: " + paradas)
-        res.json(paradas) 
-    } catch (error) {
-        console.log("Error getParadasPorNombre")
-    }
-}
 
 //Obtengo una ubicacion dada por una direccion 
 //busco todas las paradas cuya lat y lon son menos de 0.003 de diferencia respecto a la ubicacion dada
