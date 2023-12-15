@@ -5,7 +5,7 @@ import streamifier from 'streamifier'
 import dotenv from 'dotenv'
 dotenv.config()
 
-import { getAllEntidades,getEntidadID, createEntidad, editEntidad, deleteEntidad} from "../controllers/entidadController.js"
+import { getUbicacion, getEventosCercanos,getAllEntidades,getEntidadID, createEntidad, editEntidad, deleteEntidad} from "../controllers/entidadController.js"
 
 const routerEntidad = express.Router()
 
@@ -14,6 +14,8 @@ routerEntidad.get('/:id', getEntidadID)
 routerEntidad.post('/', createEntidad)
 routerEntidad.put('/:id', editEntidad)
 routerEntidad.delete('/:id', deleteEntidad)
+routerEntidad.put('/eventos', getEventosCercanos)
+router.get('/ubicacion/', getUbicacion)
 
 const fileUpload = multer();
 cloudinary.config({
