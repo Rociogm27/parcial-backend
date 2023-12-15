@@ -15,7 +15,7 @@ routerEntidad.post('/', createEntidad)
 routerEntidad.put('/:id', editEntidad)
 routerEntidad.delete('/:id', deleteEntidad)
 routerEntidad.put('/eventos', getEventosCercanos)
-router.get('/ubicacion/', getUbicacion)
+routerEntidad.get('/ubicacion/', getUbicacion)
 
 const fileUpload = multer();
 cloudinary.config({
