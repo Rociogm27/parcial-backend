@@ -26,13 +26,17 @@ export const getEntidadID = async (req, res) => {
 
 export const createEntidad = async (req, res) => {
     try {
-        const { foto, usuario, ubicacion } = req.body
+        const { nombre, lugar, lon, lat, organizador, foto, } = req.body
 
 
         const newEntidad = new Entidad({
-            foto,
-            usuario,
-            ubicacion
+            nombre,
+            timestamp,
+            lugar,
+            lon,
+            lat,
+            organizador,
+            foto
         })
 
         await newEntidad.save()
